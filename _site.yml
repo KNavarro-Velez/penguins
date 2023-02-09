@@ -1,0 +1,17 @@
+name: "Penguins rock!"
+navbar:
+  title: "Palmer's penguins"
+  left:
+    - text: "About the dataset"
+      href: index.html
+    - text: "Bills"
+      href: bills.html
+    - text: "Body Mass"
+      href: body_mass.html
+output_dir: "."
+output:
+  html_document:
+    theme: cerulean
+    highlight: textmate
+    toc: true 
+    toc_float: true

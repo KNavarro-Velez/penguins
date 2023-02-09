@@ -1,0 +1,64 @@
+---
+title: "penguins"
+author: "K.Navarro-Velez"
+date: "2/9/2023"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data
+This dataset includes measurements for penguin species from the island in Palmer Archipelago, Antarctica. It includes flipper length, body mass, bill dimensions, and sex for each individual. This is a subset of penguins_raw.
+
+Adelie Penguin ![](https://i.natgeofe.com/k/d3ea00a0-773b-437e-b7c6-a32f270b1b5a/adelie-penguin-jumping-ocean.jpg){width=50%} `fig.align = 'left'`
+
+Gentoo Penguin ![](https://www.antarctica.gov.au/site/assets/files/45561/rs35100_dsc_0715.1200x0.jpg?nc=544d){width=48%} `fig.align = 'center'`
+
+Chinstrap Penguin ![](https://www.coolantarctica.com/gallery/penguins/chinstrap_penguin2.jpg){width=50%} `fig.align = 'right'`
+
+<br>
+## Single trait distribution
+
+Histogram of bill length in mm per species.
+```{r}
+library(ggplot2)
+ggplot(data=penguins) + 
+  geom_histogram(mapping=aes(x=bill_length_mm, fill=species))+
+  facet_wrap(~species) + 
+  theme_bw()
+```
+
+Boxplots of body mass by species per sex.
+```{r}
+ggplot(data=penguins) + 
+  geom_boxplot(mapping = aes(x=species, y=body_mass_g, fill=sex)) +
+  theme_bw()
+```
+
+<br>
+## Relationship between multiple traits
+
+Scatter plot of body mass vs flipper length by species.
+```{r}
+ggplot(data=penguins) + 
+  geom_point(mapping = aes(x= body_mass_g, y=flipper_length_mm, color=species)) +
+  theme_bw()
+```
+
+Scatter plot of body mass vs flipper length by species and sex
+```{r}
+ggplot(data=penguins) + 
+  geom_point(mapping = aes(x= body_mass_g, y=flipper_length_mm, color=species, shape=sex)) +
+  theme_bw() +
+  facet_wrap(~species)
+```
+
+## Sexual dimorphism
+
+```{r}
+gentoo=penguins %>% filter(species=="Gentoo")
+```
+
+

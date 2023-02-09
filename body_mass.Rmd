@@ -1,0 +1,37 @@
+---
+title: "bodymass"
+author: "K.Navarro-Velez"
+date: "2/9/2023"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## BODY MASS AND PENGUINS
+
+Boxplots of body mass by species per sex.
+```{r}
+ggplot(data=penguins) + 
+  geom_boxplot(mapping = aes(x=species, y=body_mass_g, fill=sex)) +
+  theme_bw()
+```
+
+<br>
+Scatter plot of body mass vs flipper length by species.
+```{r}
+ggplot(data=penguins) + 
+  geom_point(mapping = aes(x= body_mass_g, y=flipper_length_mm, color=species)) +
+  theme_bw()
+```
+
+
+<br>
+Scatter plot of body mass vs flipper length by species and sex
+```{r}
+ggplot(data=penguins) + 
+  geom_point(mapping = aes(x= body_mass_g, y=flipper_length_mm, color=species, shape=sex)) +
+  theme_bw() +
+  facet_wrap(~species)
+```

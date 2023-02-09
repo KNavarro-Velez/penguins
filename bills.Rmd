@@ -1,0 +1,20 @@
+---
+title: "bills"
+author: "K.Navarro-Velez"
+date: "2/9/2023"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## BILLS AND PENGUINS
+
+Histogram of bill length in mm per species.
+```{r}
+library(ggplot2)
+ggplot(data=penguins) + 
+  geom_histogram(mapping=aes(x=bill_length_mm, fill=species))+
+  facet_wrap(~species) + 
+  theme_bw()
+```
